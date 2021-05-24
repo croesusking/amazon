@@ -5,9 +5,10 @@ import { useSelector } from "react-redux"
 import CheckoutProduct from "../components/CheckoutProduct"
 import Currency from "react-currency-formatter"
 import { useSession } from "next-auth/client"
-import { loadStripe } from "@stripe/stripe-js"
+import { loadStripe } from '@stripe/stripe-js'
 import axios from "axios"
-const stripePromise = loadStripe(process.env.stripe_public_key)
+let placeholder = process.env.stripe_public_key;
+const stripePromise = loadStripe(toString(placeholder));
 
 
 function Checkout() {
