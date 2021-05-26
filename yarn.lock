@@ -3672,7 +3672,7 @@
     "@google-cloud/firestore" "^4.5.0"
     "@google-cloud/storage" "^5.3.0"
 
-"firebase@^8.6.1":
+"firebase@^8.6.2":
   "integrity" "sha512-U2FCBZ1D8qYfuSQ0SN0dGw59x08v5mHnYtDJiUMCoulbA2psk8AqmCT/aqJz8FDTQB87iPbAxGRXVnAozagM1Q=="
   "resolved" "https://registry.npmjs.org/firebase/-/firebase-8.6.2.tgz"
   "version" "8.6.2"
