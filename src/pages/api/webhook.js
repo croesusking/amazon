@@ -1,8 +1,6 @@
 import {buffer} from "micro";
 import * as admin from "firebase-admin"
 
-
-
 //Secure a connection to firebase from the backend
 const serviceAccount = require("../../../permissions.json");
 //If no app is initialized - initialize. otherwise - dont run.
@@ -21,19 +19,14 @@ const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 const fulfillOrder= async(session) => {
     //console.log("Fulfilling order", session)
 
-    return app.firestore()
-    .collection("users")
-    .doc(session.metadata.email)
-    .collection("orders")
-    .doc(session.id)
-    .set({
-        amount:session.amount_total/100,
+    return app.firestore().collection("users").doc(session.metadata.email).collection("orders").doc(session.id)
+    .set({amount:session.amount_total/100,
         amount_shipping:session.total_details.amount_shipping/100,
         images:JSON.parse(session.metadata.images),
         timestamp:admin.firestore.FieldValue.serverTimestamp(),
     })
     .then(()=>{
-        console.log(`SUCCESS: Order ${session.id} haa been added to the DB`);
+        console.log(`SUCCESS: Order ${session.id} has been added to the DB`);
     });
 
 };
@@ -68,9 +61,6 @@ export default async(req,res)=>{
             .then(()=> res.status(200))
             .catch((err)=> res.status(400).send(`Webhook Error: ${err.message}`));
             
-            
-            
-
 
         }
 
